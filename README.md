@@ -93,8 +93,8 @@ You need to run both the frontend and backend servers simultaneously.
 
 ## Contributing
 
-*(Placeholder: Add guidelines if you plan for others to contribute)*
+*(Placeholder)*
 
 ## License
 
-*(Placeholder: Add a LICENSE file if applicable, e.g., MIT License)*
+*(Placeholder)*
