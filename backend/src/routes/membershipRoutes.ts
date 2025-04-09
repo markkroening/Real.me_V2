@@ -63,7 +63,7 @@ async function membershipRoutes(server: FastifyInstance, options: FastifyPluginO
     }
   });
 
-  server.delete<{ Params: CommunityParams }>('/api/v1/communities/:communityId/members/me', {
+  server.delete<{ Params: CommunityParams }>('/communities/:communityId/members/me', {
     schema: { params: communityParamsSchema }
   }, async (request, reply) => {
     if (!request.user?.id || !request.token) {
@@ -100,7 +100,7 @@ async function membershipRoutes(server: FastifyInstance, options: FastifyPluginO
     }
   });
 
-  server.delete<{ Params: MemberParams }>('/api/v1/communities/:communityId/members/:profileId', {
+  server.delete<{ Params: MemberParams }>('/communities/:communityId/members/:profileId', {
     schema: { params: memberParamsSchema }
   }, async (request, reply) => {
     if (!request.user?.id || !request.token) {

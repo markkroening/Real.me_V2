@@ -7,13 +7,25 @@ import { authenticate } from './hooks/authHook'; // <-- Import the hook
 import communityRoutes from './routes/communityRoutes';
 import profileRoutes from './routes/profileRoutes';
 import membershipRoutes from './routes/membershipRoutes';
+import postRoutes from './routes/postRoutes';
+import commentRoutes from './routes/commentRoutes';
+import adminRoutes from './routes/adminRoutes';
 
 // Load environment variables from .env file
 dotenv.config();
 
 // Create a Fastify instance
 const server = fastify({
-    logger: true,
+    logger: {
+      level: 'debug',
+      transport: {
+        target: 'pino-pretty',
+        options: {
+          translateTime: 'HH:MM:ss Z',
+          ignore: 'pid,hostname',
+        },
+      },
+    },
   }).withTypeProvider<ZodTypeProvider>();
 
 // **** ADD SCHEMA COMPILERS (Recommended) ****
@@ -23,23 +35,21 @@ server.setSerializerCompiler(serializerCompiler);
 
 // Register CORS plugin
 server.register(cors, {
-  origin: '*', // Allow all origins for now (adjust for production!)
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  origin: true,
+  credentials: true,
 });
 
 // Register Auth Hook
-server.addHook('onRequest', authenticate);
+server.addHook('preHandler', authenticate);
 
 // *** REGISTER API ROUTES ***
 server.register(communityRoutes, { prefix: '/api/v1' });
 server.register(profileRoutes, { prefix: '/api/v1' });
 server.register(membershipRoutes, { prefix: '/api/v1' });
+server.register(postRoutes, { prefix: '/api/v1' });
+server.register(commentRoutes, { prefix: '/api/v1' });
+server.register(adminRoutes, { prefix: '/api/v1' });
 // ***************************
-
-// *** REGISTER THE AUTHENTICATION HOOK ***
-// This will run the 'authenticate' function before handling routes
-server.addHook('onRequest', authenticate);
-// ****************************************
 
 // --- Your Routes Will Go Here Later ---
 server.get('/', async (request, reply) => {

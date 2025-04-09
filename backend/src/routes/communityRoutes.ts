@@ -18,7 +18,7 @@ async function communityRoutes(server: FastifyInstance, options: FastifyPluginOp
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 
-  server.get('/api/v1/communities', async (request, reply) => {
+  server.get('/communities', async (request, reply) => {
     const { data, error } = await supabaseAdmin
       .from('communities')
       .select('*')
@@ -32,7 +32,7 @@ async function communityRoutes(server: FastifyInstance, options: FastifyPluginOp
   });
 
   server.post<{ Body: CreateCommunityInput }>(
-    '/api/v1/communities',
+    '/communities',
     { schema: { body: createCommunitySchema } },
     async (request, reply) => {
       if (!request.user?.id || !request.token) {
@@ -61,7 +61,7 @@ async function communityRoutes(server: FastifyInstance, options: FastifyPluginOp
     }
   );
 
-  server.get<{ Params: CommunityParams }>('/api/v1/communities/:communityId', {
+  server.get<{ Params: CommunityParams }>('/communities/:communityId', {
     schema: { params: communityParamsSchema },
   }, async (request, reply) => {
     const { communityId } = request.params;
@@ -80,7 +80,7 @@ async function communityRoutes(server: FastifyInstance, options: FastifyPluginOp
     reply.send(data);
   });
 
-  server.patch<{ Params: CommunityParams; Body: UpdateCommunityInput }>('/api/v1/communities/:communityId', {
+  server.patch<{ Params: CommunityParams; Body: UpdateCommunityInput }>('/communities/:communityId', {
     schema: { params: communityParamsSchema, body: updateCommunitySchema },
   }, async (request, reply) => {
     if (!request.user?.id || !request.token) {
@@ -110,7 +110,7 @@ async function communityRoutes(server: FastifyInstance, options: FastifyPluginOp
     reply.send(data);
   });
 
-  server.delete<{ Params: CommunityParams }>('/api/v1/communities/:communityId', {
+  server.delete<{ Params: CommunityParams }>('/communities/:communityId', {
     schema: { params: communityParamsSchema },
   }, async (request, reply) => {
     if (!request.user?.id || !request.token) {
