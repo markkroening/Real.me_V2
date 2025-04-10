@@ -1,0 +1,202 @@
+{
+  "app": {
+    "name": "Real.me",
+    "tagline": "Real People, Real Communities",
+    "description": "Connect with authentic people and create meaningful connections"
+  },
+  "nav": {
+    "home": "Home",
+    "communities": "Communities",
+    "profile": "Profile",
+    "menu": "Menu",
+    "openMenu": "Open navigation menu",
+    "mainNavigation": "Main Navigation",
+    "themeTest": "Theme Test",
+    "stateTest": "State Test"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password?",
+    "resetPassword": "Reset Password",
+    "createAccount": "Create Account",
+    "welcomeBack": "Welcome Back",
+    "loginToContinue": "Login to continue on Real.me",
+    "loginPrompt": "Sign in to Real.me",
+    "orContinueWith": "or continue with",
+    "dontHaveAccount": "Create a Real.me account",
+    "noAccount": "Create a Real.me account",
+    "alreadyHaveAccount": "Already have an account?",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "verifyIdentity": "Verify Your Identity",
+    "verifyDescription": "Real.me is a community of real people. Please verify your identity to post or create content.",
+    "verifyBenefits": "Verification allows you to:\n• Create and join communities\n• Post and comment\n• Build your reputation\n• Connect with other verified users",
+    "startVerification": "Start Verification",
+    "verifyPrivacy": "Your information is secure and will only be used for verification purposes.",
+    "verificationInProgress": "Verification in Progress",
+    "verificationComplete": "Verification Complete",
+    "verificationFailed": "Verification Failed",
+    "verificationRequired": "Verification Required",
+    "verificationRequiredMessage": "You need to verify your identity to perform this action.",
+    "verifyNow": "Verify Now",
+    "cancel": "Cancel",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "passwordsDoNotMatch": "Passwords do not match",
+    "signupError": "An error occurred during signup. Please try again.",
+    "signupPrompt": "Create your account to get started",
+    "haveAccount": "Already have an account? Sign in"
+  },
+  "verification": {
+    "title": "Identity Verification",
+    "description": "Follow the steps below to verify your identity",
+    "steps": {
+      "photo": "ID Photo",
+      "selfie": "Selfie",
+      "review": "Review"
+    },
+    "stepContent": {
+      "photo": "Upload a photo of your ID document",
+      "selfie": "Take a selfie to confirm your identity",
+      "review": "Review your information before submitting"
+    },
+    "allStepsCompleted": "All steps completed",
+    "submit": "Submit Verification",
+    "status": {
+      "pending": "Verification in Progress",
+      "verified": "Verified",
+      "rejected": "Verification Failed",
+      "unverified": "Not Verified"
+    },
+    "pendingMessage": "We are reviewing your verification documents. This process usually takes 24-48 hours.",
+    "rejectedMessage": "Your verification was not approved. Please check the requirements and try again.",
+    "verifiedMessage": "Your identity has been successfully verified. You now have full access to all features.",
+    "tryAgain": "Try Again"
+  },
+  "profile": {
+    "edit": "Edit Profile",
+    "save": "Save Changes",
+    "menu": "Profile Menu",
+    "view": "View Profile",
+    "settings": "Settings",
+    "fullName": "Full Name",
+    "username": "Username",
+    "bio": "Bio",
+    "avatar": "Profile Picture",
+    "changeAvatar": "Change Picture",
+    "verified": "Verified",
+    "notVerified": "Not Verified"
+  },
+  "community": {
+    "create": "Create Community",
+    "join": "Join",
+    "leave": "Leave",
+    "members": "{{count}} members",
+    "posts": "{{count}} posts",
+    "name": "Community Name",
+    "description": "Description",
+    "rules": "Community Rules"
+  },
+  "post": {
+    "create": "Create Post",
+    "edit": "Edit Post",
+    "delete": "Delete Post",
+    "save": "Save Post",
+    "share": "Share Post",
+    "title": "Title",
+    "content": "Content",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "comments": "Comments",
+    "addComment": "Add Comment",
+    "deleteComment": "Delete Comment",
+    "editComment": "Edit Comment",
+    "comment": "Comment"
+  },
+  "home": {
+    "yourFeed": "Your Feed",
+    "noPosts": "Your Feed is Empty",
+    "noPostsDescription": "Follow communities or people to see posts here.",
+    "exploreCommunities": "Explore Communities"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "searchPlaceholder": "Search communities or posts...",
+    "clear": "Clear",
+    "success": "Success",
+    "learnMore": "Learn More",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish",
+    "backToHome": "Back to Home",
+    "changeLanguage": "Change Language"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "password": "Password must be at least 8 characters",
+    "passwordMatch": "Passwords do not match",
+    "minLength": "Must contain at least {{count}} characters",
+    "maxLength": "Must be no more than {{max}} characters",
+    "usernameFormat": "Username can only contain letters, numbers, and underscores"
+  },
+  "errors": {
+    "default": "Something went wrong",
+    "notFound": "Not found",
+    "unauthorized": "Unauthorized",
+    "forbidden": "Access denied",
+    "serverError": "Server Error",
+    "defaultTitle": "Error",
+    "defaultMessage": "An error occurred. Please try again.",
+    "generic": "Something went wrong",
+    "networkError": "Network error. Please check your connection",
+    "validation": "Please check your input"
+  },
+  "dates": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "daysAgo": "{{count}} days ago",
+    "monthsAgo": "{{count}} months ago",
+    "yearsAgo": "{{count}} years ago"
+  },
+  "footer": {
+    "ariaLabel": "Site Footer",
+    "tagline": "Join authentic communities and connect with real people who share your interests.",
+    "copyright": "All rights reserved.",
+    "about": {
+      "title": "About",
+      "aboutUs": "About Us",
+      "careers": "Careers",
+      "blog": "Blog"
+    },
+    "legal": {
+      "title": "Legal",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "guidelines": "Community Guidelines"
+    },
+    "support": {
+      "title": "Support",
+      "help": "Help Center",
+      "contact": "Contact Us",
+      "status": "System Status"
+    },
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "legal": "Legal"
+  }
+} 

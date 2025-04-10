@@ -1,0 +1,194 @@
+{
+  "app": {
+    "name": "Real.me",
+    "tagline": "Des personnes réelles, des communautés réelles",
+    "description": "Connectez-vous avec des personnes authentiques et créez des liens significatifs"
+  },
+  "nav": {
+    "home": "Accueil",
+    "communities": "Communautés",
+    "profile": "Profil",
+    "menu": "Menu",
+    "openMenu": "Ouvrir le menu de navigation",
+    "mainNavigation": "Navigation Principale",
+    "themeTest": "Test du thème",
+    "stateTest": "Test d'État"
+  },
+  "auth": {
+    "login": "Connexion",
+    "signup": "S'inscrire",
+    "logout": "Déconnexion",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "createAccount": "Créer un compte",
+    "welcomeBack": "Bon retour",
+    "loginToContinue": "Connectez-vous pour continuer sur Real.me",
+    "orContinueWith": "ou continuer avec",
+    "dontHaveAccount": "Vous n'avez pas de compte ?",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "showPassword": "Afficher le mot de passe",
+    "hidePassword": "Masquer le mot de passe",
+    "verifyIdentity": "Vérifiez Votre Identité",
+    "verifyDescription": "Real.me est une communauté de personnes réelles. Veuillez vérifier votre identité pour publier ou créer du contenu.",
+    "verifyBenefits": "La vérification vous permet de :\n• Créer et rejoindre des communautés\n• Publier et commenter\n• Construire votre réputation\n• Vous connecter avec d'autres utilisateurs vérifiés",
+    "startVerification": "Commencer la Vérification",
+    "verifyPrivacy": "Vos informations sont sécurisées et ne seront utilisées que pour la vérification.",
+    "verificationInProgress": "Vérification en Cours",
+    "verificationComplete": "Vérification Terminée",
+    "verificationFailed": "Échec de la Vérification",
+    "verificationRequired": "Vérification Requise",
+    "verificationRequiredMessage": "Vous devez vérifier votre identité pour effectuer cette action.",
+    "verifyNow": "Vérifier Maintenant",
+    "cancel": "Annuler",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "passwordsDoNotMatch": "Les mots de passe ne correspondent pas",
+    "signupError": "Une erreur s'est produite lors de l'inscription. Veuillez réessayer.",
+    "signupPrompt": "Créez votre compte pour commencer",
+    "haveAccount": "Vous avez déjà un compte ? Connectez-vous"
+  },
+  "verification": {
+    "title": "Vérification d'identité",
+    "description": "Suivez les étapes ci-dessous pour vérifier votre identité",
+    "steps": {
+      "photo": "Photo d'identité",
+      "selfie": "Selfie",
+      "review": "Vérification"
+    },
+    "stepContent": {
+      "photo": "Téléchargez une photo de votre pièce d'identité",
+      "selfie": "Prenez un selfie pour confirmer votre identité",
+      "review": "Vérifiez vos informations avant de soumettre"
+    },
+    "allStepsCompleted": "Toutes les étapes sont complétées",
+    "submit": "Soumettre la vérification",
+    "status": {
+      "pending": "Vérification en cours",
+      "verified": "Vérifié",
+      "rejected": "Vérification échouée",
+      "unverified": "Non vérifié"
+    },
+    "pendingMessage": "Nous examinons vos documents de vérification. Ce processus prend généralement 24 à 48 heures.",
+    "rejectedMessage": "Votre vérification n'a pas été approuvée. Veuillez vérifier les conditions requises et réessayer.",
+    "verifiedMessage": "Votre identité a été vérifiée avec succès. Vous avez maintenant accès à toutes les fonctionnalités.",
+    "tryAgain": "Réessayer"
+  },
+  "profile": {
+    "edit": "Modifier le profil",
+    "save": "Enregistrer les modifications",
+    "menu": "Menu du profil",
+    "view": "Voir le profil",
+    "settings": "Paramètres",
+    "cancel": "Annuler",
+    "fullName": "Nom complet",
+    "username": "Nom d'utilisateur",
+    "bio": "Biographie",
+    "avatar": "Photo de profil",
+    "changeAvatar": "Changer la photo",
+    "verified": "Vérifié",
+    "notVerified": "Non vérifié"
+  },
+  "community": {
+    "create": "Créer une communauté",
+    "join": "Rejoindre",
+    "leave": "Quitter",
+    "members": "{{count}} membres",
+    "members_plural": "{{count}} membres",
+    "posts": "{{count}} publications",
+    "posts_plural": "{{count}} publications",
+    "name": "Nom de la communauté",
+    "description": "Description",
+    "rules": "Règles de la communauté"
+  },
+  "post": {
+    "create": "Créer une publication",
+    "edit": "Modifier la publication",
+    "delete": "Supprimer la publication",
+    "save": "Enregistrer la publication",
+    "share": "Partager la publication",
+    "title": "Titre",
+    "content": "Contenu",
+    "submit": "Envoyer",
+    "cancel": "Annuler",
+    "comments": "Commentaires",
+    "addComment": "Ajouter un commentaire",
+    "deleteComment": "Supprimer le commentaire",
+    "editComment": "Modifier le commentaire",
+    "comment": "Commenter"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "success": "Succès",
+    "retry": "Réessayer",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "search": "Rechercher",
+    "searchPlaceholder": "Rechercher des communautés ou des publications...",
+    "clear": "Effacer",
+    "required": "Obligatoire",
+    "optional": "Optionnel",
+    "learnMore": "En savoir plus",
+    "back": "Retour",
+    "next": "Suivant",
+    "finish": "Terminer",
+    "backToHome": "Retour à l'accueil"
+  },
+  "validation": {
+    "required": "Ce champ est obligatoire",
+    "email": "Veuillez entrer une adresse e-mail valide",
+    "password": "Le mot de passe doit contenir au moins 8 caractères",
+    "passwordMatch": "Les mots de passe ne correspondent pas",
+    "minLength": "Doit contenir au moins {{min}} caractères",
+    "maxLength": "Ne doit pas dépasser {{max}} caractères",
+    "usernameFormat": "Le nom d'utilisateur ne peut contenir que des lettres, des chiffres et des tirets bas"
+  },
+  "errors": {
+    "default": "Une erreur est survenue",
+    "notFound": "Non trouvé",
+    "unauthorized": "Non autorisé",
+    "forbidden": "Interdit",
+    "serverError": "Erreur serveur",
+    "defaultTitle": "Erreur",
+    "defaultMessage": "Une erreur est survenue. Veuillez réessayer.",
+    "generic": "Une erreur est survenue",
+    "networkError": "Erreur réseau. Veuillez vérifier votre connexion",
+    "validation": "Veuillez vérifier vos informations"
+  },
+  "dates": {
+    "today": "Aujourd'hui",
+    "yesterday": "Hier",
+    "daysAgo": "Il y a {{count}} jours",
+    "daysAgo_plural": "Il y a {{count}} jours",
+    "monthsAgo": "Il y a {{count}} mois",
+    "yearsAgo": "Il y a {{count}} ans"
+  },
+  "footer": {
+    "ariaLabel": "Pied de page",
+    "tagline": "Rejoignez des communautés authentiques et connectez-vous avec des personnes réelles qui partagent vos intérêts.",
+    "copyright": "Tous droits réservés.",
+    "about": {
+      "title": "À propos",
+      "aboutUs": "À propos de nous",
+      "careers": "Carrières",
+      "blog": "Blog"
+    },
+    "legal": {
+      "title": "Mentions légales",
+      "terms": "Conditions d'utilisation",
+      "privacy": "Politique de confidentialité",
+      "guidelines": "Règles de la communauté"
+    },
+    "support": {
+      "title": "Support",
+      "help": "Centre d'aide",
+      "contact": "Nous contacter",
+      "status": "État du système"
+    }
+  }
+} 

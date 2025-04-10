@@ -13,6 +13,7 @@ import {
   Link,
   Alert,
 } from '@mui/material';
+import { fallbackLng } from '@/i18n/settings';
 
 export default function LoginPage() {
   const { t } = useTranslation();
@@ -28,11 +29,25 @@ export default function LoginPage() {
 
     try {
       await login(email, password);
-      router.push('/');
+      // Get the current locale from the URL
+      const pathname = window.location.pathname;
+      const locale = pathname.split('/')[1] || fallbackLng;
+      router.push(`/${locale}`);
     } catch (err) {
       setError(t('auth.loginError'));
     }
   };
+
+  // Get the current locale for links
+  const getCurrentLocale = () => {
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname;
+      return pathname.split('/')[1] || fallbackLng;
+    }
+    return fallbackLng;
+  };
+
+  const currentLocale = getCurrentLocale();
 
   return (
     <Container maxWidth="sm">
@@ -91,7 +106,7 @@ export default function LoginPage() {
             {t('auth.login')}
           </Button>
           <Box sx={{ textAlign: 'center' }}>
-            <Link href="/signup" variant="body2">
+            <Link href={`/${currentLocale}/signup`} variant="body2">
               {t('auth.noAccount')}
             </Link>
           </Box>
@@ -99,4 +114,4 @@ export default function LoginPage() {
       </Box>
     </Container>
   );
-}
+} 

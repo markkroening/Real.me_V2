@@ -1,4 +1,4 @@
-import { FastifyInstance, FastifyPluginOptions } from 'fastify';
+import { FastifyInstance, FastifyPluginOptions, FastifyRequest } from 'fastify';
 import { createClient } from '@supabase/supabase-js';
 import { supabaseAdmin } from '../lib/supabaseClient';
 import { z } from 'zod';
@@ -10,25 +10,67 @@ const createCommunitySchema = z.object({
 const updateCommunitySchema = createCommunitySchema.partial();
 const communityParamsSchema = z.object({ communityId: z.string() });
 
+// Pagination Schema for GET /communities
+const paginationQuerySchema = z.object({
+  limit: z.coerce.number().int().min(1).max(50).default(10), // Default limit 10, max 50
+  offset: z.coerce.number().int().min(0).default(0),        // Default offset 0
+});
+
 type CommunityParams = z.infer<typeof communityParamsSchema>;
 type CreateCommunityInput = z.infer<typeof createCommunitySchema>;
 type UpdateCommunityInput = z.infer<typeof updateCommunitySchema>;
+type PaginationQuery = z.infer<typeof paginationQuerySchema>;
 
 async function communityRoutes(server: FastifyInstance, options: FastifyPluginOptions) {
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 
-  server.get('/communities', async (request, reply) => {
-    const { data, error } = await supabaseAdmin
-      .from('communities')
-      .select('*')
-      .limit(100);
+  // GET /communities - List communities with pagination and recent posts
+  server.get<{ Querystring: PaginationQuery }>('/communities', {
+    schema: { querystring: paginationQuerySchema }, // Validate query params
+  }, async (request: FastifyRequest<{ Querystring: PaginationQuery }>, reply) => {
+    const { limit, offset } = request.query;
 
-    if (error) {
-      request.log.error({ error }, 'Error fetching communities');
+    try {
+      // Fetch paginated communities
+      const { data: communitiesData, error: communitiesError, count } = await supabaseAdmin
+        .from('communities')
+        .select('id, name, description', { count: 'exact' }) // Get total count
+        .order('created_at', { ascending: false }) // Order by creation date, newest first
+        .range(offset, offset + limit - 1);
+
+      if (communitiesError) throw communitiesError;
+      if (!communitiesData) throw new Error('No community data returned');
+
+      // Fetch recent posts for each community
+      const communitiesWithPosts = await Promise.all(
+        communitiesData.map(async (community) => {
+          const { data: postsData, error: postsError } = await supabaseAdmin
+            .from('posts')
+            .select('id, content, created_at')
+            .eq('community_id', community.id)
+            .order('created_at', { ascending: false })
+            .limit(3);
+
+          if (postsError) {
+            request.log.error({ error: postsError, communityId: community.id }, 'Error fetching posts for community');
+            // Continue without posts for this community if there's an error
+            return { ...community, recentPosts: [] }; 
+          }
+          return { ...community, recentPosts: postsData || [] };
+        })
+      );
+
+      // Send response with communities and total count
+      reply.send({ 
+        items: communitiesWithPosts, 
+        totalCount: count ?? 0 
+      });
+
+    } catch (error) {
+      request.log.error({ error }, 'Error fetching communities or posts');
       return reply.status(500).send({ error: 'Failed to fetch communities' });
     }
-    reply.send(data);
   });
 
   server.post<{ Body: CreateCommunityInput }>(

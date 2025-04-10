@@ -1,0 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+- Backend: Fastify, Node.js, TypeScript, Zod, @supabase/supabase-js
+- Frontend: Next.js, React, TypeScript, @supabase/supabase-js
+- Database/Auth: Supabase
+- Development Tools: VS Code, Git, GitHub, Postman, cursor
+

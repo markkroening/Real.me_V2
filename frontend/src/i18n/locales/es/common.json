@@ -1,0 +1,192 @@
+{
+  "app": {
+    "name": "Real.me",
+    "tagline": "Personas reales, comunidades reales",
+    "description": "Conéctate con personas auténticas y crea conexiones significativas"
+  },
+  "nav": {
+    "home": "Inicio",
+    "communities": "Comunidades",
+    "profile": "Perfil",
+    "menu": "Menú",
+    "openMenu": "Abrir menú de navegación",
+    "mainNavigation": "Navegación Principal",
+    "themeTest": "Prueba de tema",
+    "stateTest": "Prueba de Estado"
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "signup": "Registrarse",
+    "logout": "Cerrar sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "resetPassword": "Restablecer Contraseña",
+    "createAccount": "Crear Cuenta",
+    "welcomeBack": "Bienvenido de nuevo",
+    "loginToContinue": "Inicia sesión para continuar en Real.me",
+    "orContinueWith": "o continuar con",
+    "dontHaveAccount": "¿No tienes una cuenta?",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña",
+    "verifyIdentity": "Verifica Tu Identidad",
+    "verifyDescription": "Real.me es una comunidad de personas reales. Por favor, verifica tu identidad para publicar o crear contenido.",
+    "verifyBenefits": "La verificación te permite:\n• Crear y unirte a comunidades\n• Publicar y comentar\n• Construir tu reputación\n• Conectarte con otros usuarios verificados",
+    "startVerification": "Comenzar Verificación",
+    "verifyPrivacy": "Tu información está segura y solo se utilizará para fines de verificación.",
+    "verificationInProgress": "Verificación en Progreso",
+    "verificationComplete": "Verificación Completada",
+    "verificationFailed": "Verificación Fallida",
+    "verificationRequired": "Verificación Requerida",
+    "verificationRequiredMessage": "Necesitas verificar tu identidad para realizar esta acción.",
+    "verifyNow": "Verificar Ahora",
+    "cancel": "Cancelar",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "passwordsDoNotMatch": "Las contraseñas no coinciden",
+    "signupError": "Ocurrió un error durante el registro. Por favor, inténtelo de nuevo.",
+    "signupPrompt": "Crea tu cuenta para comenzar",
+    "haveAccount": "¿Ya tienes una cuenta? Inicia sesión"
+  },
+  "verification": {
+    "title": "Verificación de identidad",
+    "description": "Sigue los pasos a continuación para verificar tu identidad",
+    "steps": {
+      "photo": "Foto de identificación",
+      "selfie": "Selfie",
+      "review": "Revisión"
+    },
+    "stepContent": {
+      "photo": "Sube una foto de tu documento de identidad",
+      "selfie": "Toma un selfie para confirmar tu identidad",
+      "review": "Revisa tu información antes de enviar"
+    },
+    "allStepsCompleted": "Todos los pasos completados",
+    "submit": "Enviar verificación",
+    "status": {
+      "pending": "Verificación en proceso",
+      "verified": "Verificado",
+      "rejected": "Verificación fallida",
+      "unverified": "No verificado"
+    },
+    "pendingMessage": "Estamos revisando tus documentos de verificación. Este proceso suele tardar entre 24 y 48 horas.",
+    "rejectedMessage": "Tu verificación no fue aprobada. Por favor, revisa los requisitos e inténtalo de nuevo.",
+    "verifiedMessage": "Tu identidad ha sido verificada con éxito. Ahora tienes acceso completo a todas las funciones.",
+    "tryAgain": "Intentar de nuevo"
+  },
+  "profile": {
+    "edit": "Editar perfil",
+    "save": "Guardar cambios",
+    "menu": "Menú de perfil",
+    "view": "Ver Perfil",
+    "settings": "Configuración",
+    "cancel": "Cancelar",
+    "fullName": "Nombre Completo",
+    "username": "Nombre de usuario",
+    "bio": "Biografía",
+    "avatar": "Foto de perfil",
+    "changeAvatar": "Cambiar Foto",
+    "verified": "Verificado",
+    "notVerified": "No Verificado"
+  },
+  "community": {
+    "create": "Crear comunidad",
+    "join": "Unirse",
+    "leave": "Salir",
+    "members": "{{count}} miembros",
+    "members_plural": "{{count}} miembros",
+    "posts": "{{count}} publicaciones",
+    "posts_plural": "{{count}} publicaciones",
+    "name": "Nombre de la Comunidad",
+    "description": "Descripción",
+    "rules": "Reglas de la Comunidad"
+  },
+  "post": {
+    "create": "Crear publicación",
+    "edit": "Editar publicación",
+    "delete": "Eliminar publicación",
+    "save": "Guardar Publicación",
+    "share": "Compartir Publicación",
+    "title": "Título",
+    "content": "Contenido",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "comments": "Comentarios",
+    "addComment": "Agregar Comentario",
+    "deleteComment": "Eliminar Comentario",
+    "editComment": "Editar Comentario",
+    "comment": "Comentar"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ha ocurrido un error",
+    "success": "Éxito",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "search": "Buscar",
+    "searchPlaceholder": "Buscar comunidades o publicaciones...",
+    "clear": "Limpiar",
+    "required": "Obligatorio",
+    "optional": "Opcional",
+    "learnMore": "Más información",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "finish": "Finalizar",
+    "backToHome": "Volver al inicio"
+  },
+  "validation": {
+    "required": "Este campo es obligatorio",
+    "email": "Por favor, introduce un correo electrónico válido",
+    "password": "La contraseña debe tener al menos 8 caracteres",
+    "passwordMatch": "Las contraseñas no coinciden",
+    "minLength": "Debe contener al menos {{count}} caracteres",
+    "maxLength": "No debe exceder {{max}} caracteres",
+    "usernameFormat": "El nombre de usuario solo puede contener letras, números y guiones bajos"
+  },
+  "errors": {
+    "default": "Algo salió mal",
+    "notFound": "No encontrado",
+    "unauthorized": "No autorizado",
+    "forbidden": "Acceso denegado",
+    "serverError": "Error del servidor",
+    "defaultTitle": "Error",
+    "defaultMessage": "Ha ocurrido un error. Por favor, inténtalo de nuevo.",
+    "generic": "Algo salió mal",
+    "networkError": "Error de red. Por favor, verifica tu conexión",
+    "validation": "Por favor, verifica tus datos"
+  },
+  "dates": {
+    "today": "Hoy",
+    "yesterday": "Ayer",
+    "daysAgo": "Hace {{count}} días",
+    "monthsAgo": "Hace {{count}} meses",
+    "yearsAgo": "Hace {{count}} años"
+  },
+  "footer": {
+    "ariaLabel": "Pie de página",
+    "tagline": "Únete a comunidades auténticas y conéctate con personas reales que comparten tus intereses.",
+    "copyright": "Todos los derechos reservados.",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "legal": "Legal",
+    "about": {
+      "title": "Acerca de",
+      "aboutUs": "Sobre nosotros",
+      "careers": "Carreras",
+      "blog": "Blog"
+    },
+    "support": {
+      "title": "Soporte",
+      "help": "Centro de ayuda",
+      "contact": "Contáctanos",
+      "status": "Estado del sistema"
+    }
+  }
+} 
