@@ -32,6 +32,7 @@ interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
+  token: string | null;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   signup: (real_name: string, email: string, password: string) => Promise<void>;
@@ -41,163 +42,114 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Check for an existing session and fetch the user's profile on mount.
+  // Use Supabase auth state changes listener
   useEffect(() => {
-    const getSessionAndProfile = async () => {
-      try {
-        const { data: { user: supabaseUser }, error } = await supabase.auth.getUser();
-        if (error) {
-          console.error('Error retrieving user:', error);
-          return;
-        }
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        console.log('Auth event:', event, 'Session:', session);
+        setIsLoading(true);
+        const currentUser = session?.user;
+        const currentToken = session?.access_token || null;
+        setToken(currentToken);
 
-        if (supabaseUser) {
-          const { data: profileData, error: profileError } = await supabase
-            .from('profiles')
-            .select('*')
-            .eq('id', supabaseUser.id)
-            .single();
-          if (profileError) {
-            console.error('Error fetching user profile:', profileError);
-            return;
+        if (currentUser) {
+          // Fetch profile if user exists
+          try {
+            const { data: profileData, error: profileError } = await supabase
+              .from('profiles')
+              .select('*')
+              .eq('id', currentUser.id)
+              .single();
+              
+            if (profileError && profileError.code !== 'PGRST116') {
+              console.error('Error fetching user profile:', profileError);
+              setUser(null);
+            } else {
+              const finalUser: User = {
+                id: currentUser.id,
+                email: currentUser.email ?? '',
+                real_name: profileData?.real_name ?? null,
+                location: profileData?.location ?? null,
+                birth_date: profileData?.birth_date ?? null,
+                isVerified: profileData?.is_verified ?? false,
+                created_at: profileData?.created_at || new Date().toISOString(),
+                updated_at: profileData?.updated_at || new Date().toISOString(),
+                verification_date: profileData?.verification_date ?? null,
+                verified_by: profileData?.verified_by ?? null,
+                verification_notes: profileData?.verification_notes ?? null,
+              };
+              setUser(finalUser);
+            }
+          } catch (profileErr) {
+             console.error('Caught error fetching profile:', profileErr);
+             setUser(null);
           }
-          
-          const finalUser: User = {
-            id: supabaseUser.id,
-            email: supabaseUser.email ?? '',
-            real_name: profileData?.real_name ?? null,
-            location: profileData?.location ?? null,
-            birth_date: profileData?.birth_date ?? null,
-            isVerified: profileData?.is_verified ?? false,
-            created_at: profileData?.created_at || new Date().toISOString(),
-            updated_at: profileData?.updated_at || new Date().toISOString(),
-            verification_date: profileData?.verification_date ?? null,
-            verified_by: profileData?.verified_by ?? null,
-            verification_notes: profileData?.verification_notes ?? null,
-          };
-
-          setUser(finalUser);
+        } else {
+          setUser(null);
         }
-      } catch (err) {
-        console.error('Session check error:', err);
-      } finally {
         setIsLoading(false);
       }
-    };
+    );
 
-    getSessionAndProfile();
+    // Cleanup listener on component unmount
+    return () => {
+      authListener?.subscription?.unsubscribe();
+    };
   }, []);
 
   const login = async (email: string, password: string) => {
-    setIsLoading(true);
     try {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
-      if (!data.user) {
-        throw new Error('No user was returned by Supabase.');
-      }
-
-      // Fetch the user's profile data from the "profiles" table.
-      const { data: profileData, error: profileError } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', data.user.id)
-        .single();
-      if (profileError) throw profileError;
-
-      const finalUser: User = {
-        id: data.user.id,
-        email: data.user.email ?? '',
-        real_name: profileData?.real_name ?? null,
-        location: profileData?.location ?? null,
-        birth_date: profileData?.birth_date ?? null,
-        isVerified: profileData?.is_verified ?? false,
-        created_at: profileData?.created_at || new Date().toISOString(),
-        updated_at: profileData?.updated_at || new Date().toISOString(),
-        verification_date: profileData?.verification_date ?? null,
-        verified_by: profileData?.verified_by ?? null,
-        verification_notes: profileData?.verification_notes ?? null,
-      };
-
-      setUser(finalUser);
-      localStorage.setItem('user', JSON.stringify(finalUser));
     } catch (err) {
       console.error('Login failed:', err);
       throw err;
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const logout = async () => {
-    setIsLoading(true);
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
-      setUser(null);
-      localStorage.removeItem('user');
     } catch (err) {
       console.error('Logout failed:', err);
       throw err;
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const signup = async (real_name: string, email: string, password: string) => {
-    setIsLoading(true);
     try {
-      const { data, error } = await supabase.auth.signUp({ email, password });
-      if (error) throw error;
-      if (!data.user) {
+      const { data: signUpData, error: signUpError } = await supabase.auth.signUp({ email, password });
+      if (signUpError) throw signUpError;
+      if (!signUpData.user) {
         throw new Error('No user was returned by Supabase during signup.');
       }
 
       const now = new Date().toISOString();
 
-      // Insert a new profile into the "profiles" table using the provided real name.
       const { error: insertError } = await supabase
         .from('profiles')
         .insert([
           {
-            id: data.user.id,
-            email: data.user.email,
+            id: signUpData.user.id,
+            email: signUpData.user.email,
             real_name: real_name,
-            location: null,
-            birth_date: null,
             is_verified: false,
             created_at: now,
             updated_at: now,
-            verification_date: null,
-            verified_by: null,
-            verification_notes: null,
           },
         ]);
-      if (insertError) throw insertError;
+        
+      if (insertError) {
+          console.warn('Profile insertion failed (maybe RLS?):', insertError);
+      }
 
-      const finalUser: User = {
-        id: data.user.id,
-        email: data.user.email ?? '',
-        real_name,
-        location: null,
-        birth_date: null,
-        isVerified: false,
-        created_at: now,
-        updated_at: now,
-        verification_date: null,
-        verified_by: null,
-        verification_notes: null,
-      };
-
-      setUser(finalUser);
-      localStorage.setItem('user', JSON.stringify(finalUser));
     } catch (err) {
       console.error('Signup failed:', err);
       throw err;
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -207,6 +159,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         user,
         isAuthenticated: !!user,
         isLoading,
+        token,
         login,
         logout,
         signup,

@@ -50,7 +50,8 @@
     "passwordsDoNotMatch": "Passwords do not match",
     "signupError": "An error occurred during signup. Please try again.",
     "signupPrompt": "Create your account to get started",
-    "haveAccount": "Already have an account? Sign in"
+    "haveAccount": "Already have an account? Sign in",
+    "loginRequired": "Login required to join"
   },
   "verification": {
     "title": "Identity Verification",
@@ -90,17 +91,39 @@
     "avatar": "Profile Picture",
     "changeAvatar": "Change Picture",
     "verified": "Verified",
-    "notVerified": "Not Verified"
+    "notVerified": "Not Verified",
+    "profileInfo": "Profile Info",
+    "realName": "Name",
+    "location": "Location",
+    "birthDate": "Birth Date",
+    "memberSince": "Member Since",
+    "updateSuccess": "Profile updated successfully.",
+    "editProfile": "Edit Profile",
+    "email": "Email"
   },
   "community": {
     "create": "Create Community",
+    "createTitle": "Create a New Community",
+    "createDescription": "Give your community a name and a brief description.",
+    "name": "Community Name",
+    "namePlaceholder": "e.g., Awesome Photographers",
+    "description": "Description (optional)",
+    "descriptionPlaceholder": "What is this community about?",
+    "submitCreate": "Create Community",
     "join": "Join",
     "leave": "Leave",
-    "members": "{{count}} members",
+    "joined": "Joined",
+    "members": "{{count}} Members",
+    "members_one": "{{count}} Member",
     "posts": "{{count}} posts",
-    "name": "Community Name",
-    "description": "Description",
-    "rules": "Community Rules"
+    "verifiedOnlyTooltip": "Verified members only",
+    "privateTooltip": "This community is private",
+    "verificationRequiredTooltip": "Verification required to join this community",
+    "joinLabel": "Join community {{name}}",
+    "leaveLabel": "Leave community {{name}}",
+    "searchPlaceholder": "Search communities...",
+    "endOfList": "You've seen all communities.",
+    "noResults": "No communities found matching your search."
   },
   "post": {
     "create": "Create Post",
@@ -116,7 +139,21 @@
     "addComment": "Add Comment",
     "deleteComment": "Delete Comment",
     "editComment": "Edit Comment",
-    "comment": "Comment"
+    "comment": "Comment",
+    "postedBy": "Posted by {{name}}",
+    "commentsLabel": "{{count}} comments, link to post comments",
+    "commentsCount_one": "{{count}} comment",
+    "commentsCount": "{{count}} comments",
+    "notFound": "Post not found.",
+    "loading": "Loading post...",
+    "commentsError": "Could not load comments.",
+    "commentSubmitError": "Failed to post comment.",
+    "noComments": "No comments yet. Be the first to comment!",
+    "verifyToComment": "Verify your identity to post comments.",
+    "loginToComment": "Log in to comment.",
+    "commentPlaceholder": "Write a comment...",
+    "submitComment": "Post Comment",
+    "reply": "Reply"
   },
   "home": {
     "yourFeed": "Your Feed",

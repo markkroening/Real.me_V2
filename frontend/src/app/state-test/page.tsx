@@ -82,7 +82,6 @@ export default function StateTestPage() {
               Default Error
             </Typography>
             <ErrorMessage
-              title="Failed to load posts"
               message="Please check your connection and try again"
               onRetry={handleRetry}
             />
@@ -92,8 +91,6 @@ export default function StateTestPage() {
               Inline Error
             </Typography>
             <ErrorMessage
-              variant="inline"
-              title="Comment failed"
               message="Your comment could not be posted"
               onRetry={handleRetry}
             />
@@ -103,8 +100,6 @@ export default function StateTestPage() {
               Toast Error
             </Typography>
             <ErrorMessage
-              variant="toast"
-              title="Network Error"
               message="Unable to reach the server"
             />
           </MuiGrid>
@@ -125,9 +120,14 @@ export default function StateTestPage() {
               Feed Empty
             </Typography>
             <EmptyState
-              type="feed"
-              actionLabel="Create Post"
-              onAction={handleEmptyAction}
+              title="No Posts Yet"
+              description="There are no posts to display"
+              icon="people"
+              action={
+                <Button variant="contained" onClick={handleEmptyAction}>
+                  Create Post
+                </Button>
+              }
             />
           </MuiGrid>
           <MuiGrid item xs={12} md={4}>
@@ -135,8 +135,9 @@ export default function StateTestPage() {
               Search Empty
             </Typography>
             <EmptyState
-              type="search"
+              title="No Results"
               description="No results found for 'test query'"
+              icon="explore"
             />
           </MuiGrid>
           <MuiGrid item xs={12} md={4}>
@@ -144,9 +145,14 @@ export default function StateTestPage() {
               Comments Empty
             </Typography>
             <EmptyState
-              type="comments"
-              actionLabel="Add Comment"
-              onAction={handleEmptyAction}
+              title="No Comments"
+              description="Be the first to comment"
+              icon="group"
+              action={
+                <Button variant="contained" onClick={handleEmptyAction}>
+                  Add Comment
+                </Button>
+              }
             />
           </MuiGrid>
         </MuiGrid>

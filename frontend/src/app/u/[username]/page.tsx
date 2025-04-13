@@ -31,13 +31,31 @@ import Link from 'next/link';
 import { format } from 'date-fns';
 
 import { useAuth } from '@/contexts/AuthContext';
-import { useProfile } from '@/contexts/ProfileContext';
+import { useProfile, UserProfile } from '@/contexts/ProfileContext';
 import { usePost } from '@/contexts/PostContext';
-import PostItem from '@/components/PostItem';
+import PostItem, { PostSummary } from '@/components/PostItem';
 import VerificationBadge from '@/components/VerificationBadge';
 import FollowButton from '@/components/FollowButton';
-import { PostCard } from '@/components/PostCard';
-import { UserProfile, Post } from '@/types';
+
+// Function to convert Post to PostSummary format
+const adaptPostToSummary = (post: any): PostSummary => {
+  return {
+    id: post.id,
+    title: post.title,
+    content_snippet: post.content?.substring(0, 150) + '...',
+    author: {
+      id: post.authorId,
+      real_name: post.authorName
+    },
+    community: {
+      id: post.communityId,
+      name: post.communityName,
+      icon_url: null
+    },
+    comment_count: post.commentsCount || 0,
+    created_at: post.createdAt
+  };
+};
 
 export default function UserProfilePage() {
   const { t } = useTranslation();
@@ -54,7 +72,8 @@ export default function UserProfilePage() {
   const [error, setError] = useState<string | null>(null);
   const [isFollowing, setIsFollowing] = useState(false);
   
-  const isOwnProfile = currentUser?.username === username;
+  // Check if this is the current user's profile
+  const isOwnProfile = currentUser && profile && currentUser.id === profile.id;
   
   useEffect(() => {
     const loadProfileData = async () => {
@@ -277,7 +296,7 @@ export default function UserProfilePage() {
         <Grid container spacing={3}>
           {posts.map((post) => (
             <Grid item xs={12} key={post.id}>
-              <PostCard post={post} />
+              <PostItem post={adaptPostToSummary(post)} />
             </Grid>
           ))}
         </Grid>

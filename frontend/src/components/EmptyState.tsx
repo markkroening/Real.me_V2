@@ -14,6 +14,11 @@ interface EmptyStateProps {
   description: string;
   action?: ReactNode;
   icon?: 'people' | 'group' | 'explore';
+  
+  // Legacy props for backwards compatibility
+  type?: string;
+  actionLabel?: string;
+  onAction?: () => void;
 }
 
 export default function EmptyState({
@@ -21,6 +26,11 @@ export default function EmptyState({
   description,
   action,
   icon = 'people',
+  
+  // Handle legacy props
+  type,
+  actionLabel,
+  onAction,
 }: EmptyStateProps) {
   const getIcon = () => {
     switch (icon) {
@@ -32,6 +42,13 @@ export default function EmptyState({
         return <People sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />;
     }
   };
+
+  // Support legacy prop format
+  const actionElement = action || (actionLabel && onAction ? (
+    <Button variant="contained" onClick={onAction}>
+      {actionLabel}
+    </Button>
+  ) : null);
 
   return (
     <Paper
@@ -50,9 +67,9 @@ export default function EmptyState({
       <Typography variant="body1" color="text.secondary" paragraph>
         {description}
       </Typography>
-      {action && (
+      {actionElement && (
         <Box sx={{ mt: 2 }}>
-          {action}
+          {actionElement}
         </Box>
       )}
     </Paper>

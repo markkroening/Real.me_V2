@@ -153,47 +153,42 @@ export default function ProfilePage() {
 
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
-      <Card elevation={2} sx={{ borderRadius: 2, overflow: 'hidden' }}>
-        {/* Profile Header */}
+      <Card elevation={2} sx={{ borderRadius: 2 }}>
+        {/* Profile Header - Simplified Layout */}
         <Box sx={{ 
           bgcolor: 'primary.main', 
-          p: 4, 
+          p: 3, // Use uniform padding
           color: 'white',
-          position: 'relative',
-          height: 200,
-          display: 'flex',
-          alignItems: 'flex-end'
+          // Removed position: relative
         }}>
-          <Box sx={{ 
-            position: 'absolute', 
-            bottom: -50, 
-            left: 40,
-            display: 'flex',
-            alignItems: 'flex-end',
-            gap: 3
-          }}>
+          {/* Use Stack for Avatar and Text layout */}
+          <Stack direction="row" spacing={2} alignItems="center">
             <Avatar
               sx={{ 
-                width: 120, 
-                height: 120, 
-                border: '4px solid white',
+                width: 80, // Adjusted size
+                height: 80,
+                // Removed border matching background, maybe add simple white?
+                border: `2px solid white`,
                 bgcolor: 'primary.dark'
               }}
             >
               {getInitials()}
             </Avatar>
-            <Box sx={{ mb: 2 }}>
-              <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold' }}>
+            {/* Text Box (Name and Member Since) */}
+            <Box> {/* Removed mb and transform */}
+              <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold', color: 'text.primary' }}>
                 {getDisplayName()}
               </Typography>
-              <Typography variant="body1" sx={{ opacity: 0.9 }}>
+              <Typography variant="body1" sx={{ opacity: 0.9, color: 'text.secondary' }}> 
                 {t('profile.memberSince')} {new Date(user.created_at).toLocaleDateString()}
               </Typography>
             </Box>
-          </Box>
+          </Stack>
+          {/* Removed the absolutely positioned Box */}
         </Box>
 
-        <CardContent sx={{ pt: 8, pb: 4 }}>
+        {/* Reduced CardContent padding top */}
+        <CardContent sx={{ pt: 4, pb: 4 }}>
           {success && (
             <Alert severity="success" sx={{ mb: 3 }}>
               {t('profile.updateSuccess')}

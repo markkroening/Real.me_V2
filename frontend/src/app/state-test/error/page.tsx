@@ -9,10 +9,8 @@ export default function ErrorPage() {
 
   return (
     <ErrorMessage
-      title="Page Not Found"
       message="The page you're looking for doesn't exist or has been moved."
       onRetry={handleRetry}
-      fullPage
     />
   );
 } 

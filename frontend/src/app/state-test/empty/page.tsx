@@ -1,6 +1,7 @@
 'use client';
 
 import EmptyState from '@/components/EmptyState';
+import { Button } from '@mui/material';
 
 export default function EmptyPage() {
   const handleAction = () => {
@@ -9,10 +10,14 @@ export default function EmptyPage() {
 
   return (
     <EmptyState
-      type="feed"
-      actionLabel="Go to Homepage"
-      onAction={handleAction}
-      fullPage
+      title="No Content Available"
+      description="There's nothing to show here right now."
+      icon="explore"
+      action={
+        <Button variant="contained" onClick={handleAction}>
+          Go to Homepage
+        </Button>
+      }
     />
   );
 } 

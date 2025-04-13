@@ -46,10 +46,11 @@ export default function SignupPage() {
     }
 
     try {
-      await signup(formData.email, formData.password, {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-      });
+      await signup(
+        `${formData.firstName} ${formData.lastName}`,
+        formData.email,
+        formData.password
+      );
       router.push('/verify');
     } catch (err) {
       setError(t('auth.signupError'));

@@ -3,6 +3,8 @@ import { createClient } from '@supabase/supabase-js';
 import { supabaseAdmin } from '../lib/supabaseClient';
 import { z } from 'zod';
 
+console.log('[Init] commentRoutes loaded');
+
 // Validation schemas
 const createCommentSchema = z.object({
   content: z.string().min(1).max(1000),
@@ -251,4 +253,4 @@ async function commentRoutes(server: FastifyInstance, options: FastifyPluginOpti
   });
 }
 
-export default commentRoutes;
+export default commentRoutes; 

@@ -12,9 +12,20 @@ import { Error as ErrorIcon } from '@mui/icons-material';
 interface ErrorMessageProps {
   message?: string;
   onRetry?: () => void;
+  
+  // Add legacy props for backwards compatibility
+  title?: string;
+  variant?: string;
+  fullPage?: boolean;
 }
 
-export default function ErrorMessage({ message, onRetry }: ErrorMessageProps) {
+export default function ErrorMessage({ 
+  message, 
+  onRetry,
+  title,
+  variant,
+  fullPage
+}: ErrorMessageProps) {
   const { t } = useTranslation();
 
   return (
@@ -29,7 +40,7 @@ export default function ErrorMessage({ message, onRetry }: ErrorMessageProps) {
     >
       <ErrorIcon color="error" sx={{ fontSize: 48, mb: 2 }} />
       <Typography variant="h6" component="h2" gutterBottom>
-        {t('errors.generic')}
+        {title || t('errors.generic')}
       </Typography>
       <Typography variant="body1" color="text.secondary" paragraph>
         {message || t('errors.default')}

@@ -3,6 +3,8 @@ import { supabaseAdmin } from '../lib/supabaseClient'; // Import Supabase client
 import { z } from 'zod';
 import { createClient } from '@supabase/supabase-js';
 
+console.log('[Init] profileRoutes loaded');
+
 // Validation schemas
 const profileParamsSchema = z.object({
   profileId: z.string().uuid({ message: "Invalid Profile ID format" }),
